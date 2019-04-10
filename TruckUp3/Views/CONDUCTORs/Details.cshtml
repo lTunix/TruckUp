@@ -1,0 +1,50 @@
+﻿@model TruckUp3.CONDUCTOR
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CONDUCTOR</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NOMBRE_CONDUCTOR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NOMBRE_CONDUCTOR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.APELLIDOPAT_CONDUCTOR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.APELLIDOPAT_CONDUCTOR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.APELLIDOMAT_CONDUCTOR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.APELLIDOMAT_CONDUCTOR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TELEFONO_CONDUCTOR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TELEFONO_CONDUCTOR)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.RUT_CONDUCTOR }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

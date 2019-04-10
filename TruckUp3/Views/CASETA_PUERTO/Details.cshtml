@@ -1,0 +1,42 @@
+﻿@model TruckUp3.CASETA_PUERTO
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CASETA_PUERTO</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DIRECCION_CASETA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DIRECCION_CASETA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TELEFONO_CASETA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TELEFONO_CASETA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.REGION.NOMBRE_REGION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.REGION.NOMBRE_REGION)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_CASETA }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,42 @@
+﻿@model TruckUp3.CAMION
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CAMION</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NRO_RAMPLAS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NRO_RAMPLAS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NRO_EJES)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NRO_EJES)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CONDUCTOR.NOMBRE_CONDUCTOR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CONDUCTOR.NOMBRE_CONDUCTOR)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PATENTE }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

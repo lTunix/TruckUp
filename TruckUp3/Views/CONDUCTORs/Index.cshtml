@@ -1,0 +1,51 @@
+﻿@model IEnumerable<TruckUp3.CONDUCTOR>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NOMBRE_CONDUCTOR)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.APELLIDOPAT_CONDUCTOR)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.APELLIDOMAT_CONDUCTOR)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TELEFONO_CONDUCTOR)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NOMBRE_CONDUCTOR)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.APELLIDOPAT_CONDUCTOR)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.APELLIDOMAT_CONDUCTOR)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TELEFONO_CONDUCTOR)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.RUT_CONDUCTOR }) |
+            @Html.ActionLink("Details", "Details", new { id=item.RUT_CONDUCTOR }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.RUT_CONDUCTOR })
+        </td>
+    </tr>
+}
+
+</table>

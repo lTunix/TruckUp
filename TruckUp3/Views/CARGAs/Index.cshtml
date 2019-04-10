@@ -1,0 +1,51 @@
+﻿@model IEnumerable<TruckUp3.CARGA>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ORIGEN_CARGA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DESTINO_CARGA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DESCRIPCION_CARGA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CAMION.RUT_CONDUCTOR)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ORIGEN_CARGA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DESTINO_CARGA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DESCRIPCION_CARGA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CAMION.RUT_CONDUCTOR)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID_CARGA }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID_CARGA }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID_CARGA })
+        </td>
+    </tr>
+}
+
+</table>

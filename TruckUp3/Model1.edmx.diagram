@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d2bea9f960cb4b98910628272dacf42b" Name="Diagram1" ZoomLevel="55">
+        <EntityTypeShape EntityType="TruckUp3Model.CAMION" Width="1.5" PointX="5.25" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TruckUp3Model.CARGA" Width="1.5" PointX="7.5" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TruckUp3Model.CASETA_PUERTO" Width="1.5" PointX="3" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TruckUp3Model.CENTRAL" Width="1.5" PointX="7.5" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TruckUp3Model.COMUNA" Width="1.5" PointX="5.25" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="TruckUp3Model.CONDUCTOR" Width="1.5" PointX="3" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TruckUp3Model.HOJA_DE_RUTA" Width="1.5" PointX="9.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TruckUp3Model.PROVINCIA" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="TruckUp3Model.REGION" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TruckUp3Model.ROL" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TruckUp3Model.USUARIO" Width="1.5" PointX="12" PointY="4.125" IsExpanded="true" />
+        <AssociationConnector Association="TruckUp3Model.FK_CAMION_RELATIONS_CONDUCTO" ManuallyRouted="false" />
+        <AssociationConnector Association="TruckUp3Model.FK_CARGA_RELATIONS_CAMION" ManuallyRouted="false" />
+        <AssociationConnector Association="TruckUp3Model.FK_HOJA_DE__RELATIONS_CARGA" ManuallyRouted="false" />
+        <AssociationConnector Association="TruckUp3Model.FK_CASETA_P_RELATIONS_REGION" ManuallyRouted="false" />
+        <AssociationConnector Association="TruckUp3Model.FK_HOJA_DE__RELATIONS_CASETA_P" ManuallyRouted="false" />
+        <AssociationConnector Association="TruckUp3Model.FK_CENTRAL_RELATIONS_COMUNA" ManuallyRouted="false" />
+        <AssociationConnector Association="TruckUp3Model.FK_HOJA_DE__RELATIONS_CENTRAL" ManuallyRouted="false" />
+        <AssociationConnector Association="TruckUp3Model.FK_COMUNA_RELATIONS_PROVINCI" ManuallyRouted="false" />
+        <AssociationConnector Association="TruckUp3Model.FK_PROVINCI_RELATIONS_REGION" ManuallyRouted="false" />
+        <AssociationConnector Association="TruckUp3Model.FK_USUARIO_RELATIONS_ROL" ManuallyRouted="false" />
+        <AssociationConnector Association="TruckUp3Model.RELATIONSHIP_4" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

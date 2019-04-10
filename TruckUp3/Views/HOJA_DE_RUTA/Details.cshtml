@@ -1,0 +1,74 @@
+﻿@model TruckUp3.HOJA_DE_RUTA
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>HOJA_DE_RUTA</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.INICIO_RUTA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.INICIO_RUTA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DESTINO_RUTA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DESTINO_RUTA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FECHA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FECHA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FECHA_HORA_LLEGADA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FECHA_HORA_LLEGADA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CARGA.PATENTE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CARGA.PATENTE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CASETA_PUERTO.DIRECCION_CASETA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CASETA_PUERTO.DIRECCION_CASETA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CENTRAL.DIRECCION_CENTRAL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CENTRAL.DIRECCION_CENTRAL)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_HOJA }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,66 @@
+﻿@model TruckUp3.USUARIO
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>USUARIO</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NOMBRE_USUARIO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NOMBRE_USUARIO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.APELLIDOPAT_USUARIO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.APELLIDOPAT_USUARIO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.APELLIDOMAT_USUARIO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.APELLIDOMAT_USUARIO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TELEFONO_USUARIO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TELEFONO_USUARIO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CORREO_USUARIO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CORREO_USUARIO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ROL.TIPO_ROL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ROL.TIPO_ROL)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.RUT_USUARIO }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

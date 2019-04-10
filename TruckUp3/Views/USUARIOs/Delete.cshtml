@@ -1,0 +1,72 @@
+﻿@model TruckUp3.USUARIO
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>USUARIO</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NOMBRE_USUARIO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NOMBRE_USUARIO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.APELLIDOPAT_USUARIO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.APELLIDOPAT_USUARIO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.APELLIDOMAT_USUARIO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.APELLIDOMAT_USUARIO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TELEFONO_USUARIO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TELEFONO_USUARIO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CORREO_USUARIO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CORREO_USUARIO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ROL.TIPO_ROL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ROL.TIPO_ROL)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

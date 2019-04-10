@@ -1,0 +1,45 @@
+﻿@model IEnumerable<TruckUp3.CASETA_PUERTO>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DIRECCION_CASETA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TELEFONO_CASETA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.REGION.NOMBRE_REGION)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DIRECCION_CASETA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TELEFONO_CASETA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.REGION.NOMBRE_REGION)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID_CASETA }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID_CASETA }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID_CASETA })
+        </td>
+    </tr>
+}
+
+</table>

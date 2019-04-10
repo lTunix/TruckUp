@@ -1,0 +1,69 @@
+﻿@model IEnumerable<TruckUp3.HOJA_DE_RUTA>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.INICIO_RUTA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DESTINO_RUTA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FECHA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FECHA_HORA_LLEGADA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CARGA.PATENTE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CASETA_PUERTO.DIRECCION_CASETA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CENTRAL.DIRECCION_CENTRAL)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.INICIO_RUTA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DESTINO_RUTA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FECHA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FECHA_HORA_LLEGADA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CARGA.PATENTE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CASETA_PUERTO.DIRECCION_CASETA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CENTRAL.DIRECCION_CENTRAL)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID_HOJA }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID_HOJA }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID_HOJA })
+        </td>
+    </tr>
+}
+
+</table>

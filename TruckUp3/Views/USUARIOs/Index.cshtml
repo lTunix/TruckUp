@@ -1,0 +1,63 @@
+﻿@model IEnumerable<TruckUp3.USUARIO>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NOMBRE_USUARIO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.APELLIDOPAT_USUARIO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.APELLIDOMAT_USUARIO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TELEFONO_USUARIO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CORREO_USUARIO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ROL.TIPO_ROL)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NOMBRE_USUARIO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.APELLIDOPAT_USUARIO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.APELLIDOMAT_USUARIO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TELEFONO_USUARIO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CORREO_USUARIO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ROL.TIPO_ROL)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.RUT_USUARIO }) |
+            @Html.ActionLink("Details", "Details", new { id=item.RUT_USUARIO }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.RUT_USUARIO })
+        </td>
+    </tr>
+}
+
+</table>

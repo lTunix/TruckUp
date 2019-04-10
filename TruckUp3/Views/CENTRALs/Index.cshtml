@@ -1,0 +1,51 @@
+﻿@model IEnumerable<TruckUp3.CENTRAL>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DIRECCION_CENTRAL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TELEFONO_CENTRAL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EMAIL_CENTRAL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.COMUNA.NOMBRE_COMUNA)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DIRECCION_CENTRAL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TELEFONO_CENTRAL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EMAIL_CENTRAL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.COMUNA.NOMBRE_COMUNA)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID_CENTRAL }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID_CENTRAL }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID_CENTRAL })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,80 @@
+﻿@model TruckUp3.HOJA_DE_RUTA
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>HOJA_DE_RUTA</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.INICIO_RUTA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.INICIO_RUTA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DESTINO_RUTA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DESTINO_RUTA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FECHA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FECHA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FECHA_HORA_LLEGADA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FECHA_HORA_LLEGADA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CARGA.PATENTE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CARGA.PATENTE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CASETA_PUERTO.DIRECCION_CASETA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CASETA_PUERTO.DIRECCION_CASETA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CENTRAL.DIRECCION_CENTRAL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CENTRAL.DIRECCION_CENTRAL)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

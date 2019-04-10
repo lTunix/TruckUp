@@ -1,0 +1,56 @@
+﻿@model TruckUp3.CARGA
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>CARGA</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ORIGEN_CARGA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ORIGEN_CARGA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DESTINO_CARGA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DESTINO_CARGA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DESCRIPCION_CARGA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DESCRIPCION_CARGA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CAMION.RUT_CONDUCTOR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CAMION.RUT_CONDUCTOR)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

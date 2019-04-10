@@ -1,0 +1,50 @@
+﻿@model TruckUp3.CARGA
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CARGA</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ORIGEN_CARGA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ORIGEN_CARGA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DESTINO_CARGA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DESTINO_CARGA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DESCRIPCION_CARGA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DESCRIPCION_CARGA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CAMION.RUT_CONDUCTOR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CAMION.RUT_CONDUCTOR)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_CARGA }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

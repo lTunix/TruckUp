@@ -1,0 +1,787 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TruckUp3Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CAMION">
+          <Key>
+            <PropertyRef Name="PATENTE" />
+          </Key>
+          <Property Name="PATENTE" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="RUT_CONDUCTOR" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="NRO_RAMPLAS" Type="int" Nullable="false" />
+          <Property Name="NRO_EJES" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CARGA">
+          <Key>
+            <PropertyRef Name="ID_CARGA" />
+          </Key>
+          <Property Name="ID_CARGA" Type="int" Nullable="false" />
+          <Property Name="PATENTE" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="ORIGEN_CARGA" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DESTINO_CARGA" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DESCRIPCION_CARGA" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CASETA_PUERTO">
+          <Key>
+            <PropertyRef Name="ID_CASETA" />
+          </Key>
+          <Property Name="ID_CASETA" Type="int" Nullable="false" />
+          <Property Name="ID_REGION" Type="int" Nullable="false" />
+          <Property Name="DIRECCION_CASETA" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="TELEFONO_CASETA" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CENTRAL">
+          <Key>
+            <PropertyRef Name="ID_CENTRAL" />
+          </Key>
+          <Property Name="ID_CENTRAL" Type="int" Nullable="false" />
+          <Property Name="ID_COMUNA" Type="int" Nullable="false" />
+          <Property Name="DIRECCION_CENTRAL" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="TELEFONO_CENTRAL" Type="int" Nullable="false" />
+          <Property Name="EMAIL_CENTRAL" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="COMUNA">
+          <Key>
+            <PropertyRef Name="ID_COMUNA" />
+          </Key>
+          <Property Name="ID_COMUNA" Type="int" Nullable="false" />
+          <Property Name="ID_PROVINCIA" Type="int" Nullable="false" />
+          <Property Name="NOMBRE_COMUNA" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CONDUCTOR">
+          <Key>
+            <PropertyRef Name="RUT_CONDUCTOR" />
+          </Key>
+          <Property Name="RUT_CONDUCTOR" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="NOMBRE_CONDUCTOR" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="APELLIDOPAT_CONDUCTOR" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="APELLIDOMAT_CONDUCTOR" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TELEFONO_CONDUCTOR" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HOJA_DE_RUTA">
+          <Key>
+            <PropertyRef Name="ID_HOJA" />
+          </Key>
+          <Property Name="ID_HOJA" Type="int" Nullable="false" />
+          <Property Name="ID_CENTRAL" Type="int" Nullable="false" />
+          <Property Name="ID_CASETA" Type="int" Nullable="false" />
+          <Property Name="ID_CARGA" Type="int" Nullable="false" />
+          <Property Name="INICIO_RUTA" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DESTINO_RUTA" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FECHA" Type="datetime" Nullable="false" />
+          <Property Name="FECHA_HORA_LLEGADA" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PROVINCIA">
+          <Key>
+            <PropertyRef Name="ID_PROVINCIA" />
+          </Key>
+          <Property Name="ID_PROVINCIA" Type="int" Nullable="false" />
+          <Property Name="ID_REGION" Type="int" Nullable="false" />
+          <Property Name="NOMBRE_PROVINCIA" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="REGION">
+          <Key>
+            <PropertyRef Name="ID_REGION" />
+          </Key>
+          <Property Name="ID_REGION" Type="int" Nullable="false" />
+          <Property Name="NOMBRE_REGION" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RELATIONSHIP_4">
+          <Key>
+            <PropertyRef Name="RUT_USUARIO" />
+            <PropertyRef Name="ID_HOJA" />
+          </Key>
+          <Property Name="RUT_USUARIO" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="ID_HOJA" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ROL">
+          <Key>
+            <PropertyRef Name="ID_ROL" />
+          </Key>
+          <Property Name="ID_ROL" Type="int" Nullable="false" />
+          <Property Name="TIPO_ROL" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="USUARIO">
+          <Key>
+            <PropertyRef Name="RUT_USUARIO" />
+          </Key>
+          <Property Name="RUT_USUARIO" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="ID_ROL" Type="int" Nullable="false" />
+          <Property Name="NOMBRE_USUARIO" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="APELLIDOPAT_USUARIO" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="APELLIDOMAT_USUARIO" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TELEFONO_USUARIO" Type="int" Nullable="false" />
+          <Property Name="CORREO_USUARIO" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_CAMION_RELATIONS_CONDUCTO">
+          <End Role="CONDUCTOR" Type="Self.CONDUCTOR" Multiplicity="1" />
+          <End Role="CAMION" Type="Self.CAMION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CONDUCTOR">
+              <PropertyRef Name="RUT_CONDUCTOR" />
+            </Principal>
+            <Dependent Role="CAMION">
+              <PropertyRef Name="RUT_CONDUCTOR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CARGA_RELATIONS_CAMION">
+          <End Role="CAMION" Type="Self.CAMION" Multiplicity="1" />
+          <End Role="CARGA" Type="Self.CARGA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAMION">
+              <PropertyRef Name="PATENTE" />
+            </Principal>
+            <Dependent Role="CARGA">
+              <PropertyRef Name="PATENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CASETA_P_RELATIONS_REGION">
+          <End Role="REGION" Type="Self.REGION" Multiplicity="1" />
+          <End Role="CASETA_PUERTO" Type="Self.CASETA_PUERTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="REGION">
+              <PropertyRef Name="ID_REGION" />
+            </Principal>
+            <Dependent Role="CASETA_PUERTO">
+              <PropertyRef Name="ID_REGION" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CENTRAL_RELATIONS_COMUNA">
+          <End Role="COMUNA" Type="Self.COMUNA" Multiplicity="1" />
+          <End Role="CENTRAL" Type="Self.CENTRAL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COMUNA">
+              <PropertyRef Name="ID_COMUNA" />
+            </Principal>
+            <Dependent Role="CENTRAL">
+              <PropertyRef Name="ID_COMUNA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COMUNA_RELATIONS_PROVINCI">
+          <End Role="PROVINCIA" Type="Self.PROVINCIA" Multiplicity="1" />
+          <End Role="COMUNA" Type="Self.COMUNA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROVINCIA">
+              <PropertyRef Name="ID_PROVINCIA" />
+            </Principal>
+            <Dependent Role="COMUNA">
+              <PropertyRef Name="ID_PROVINCIA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HOJA_DE__RELATIONS_CARGA">
+          <End Role="CARGA" Type="Self.CARGA" Multiplicity="1" />
+          <End Role="HOJA_DE_RUTA" Type="Self.HOJA_DE_RUTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CARGA">
+              <PropertyRef Name="ID_CARGA" />
+            </Principal>
+            <Dependent Role="HOJA_DE_RUTA">
+              <PropertyRef Name="ID_CARGA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HOJA_DE__RELATIONS_CASETA_P">
+          <End Role="CASETA_PUERTO" Type="Self.CASETA_PUERTO" Multiplicity="1" />
+          <End Role="HOJA_DE_RUTA" Type="Self.HOJA_DE_RUTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CASETA_PUERTO">
+              <PropertyRef Name="ID_CASETA" />
+            </Principal>
+            <Dependent Role="HOJA_DE_RUTA">
+              <PropertyRef Name="ID_CASETA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HOJA_DE__RELATIONS_CENTRAL">
+          <End Role="CENTRAL" Type="Self.CENTRAL" Multiplicity="1" />
+          <End Role="HOJA_DE_RUTA" Type="Self.HOJA_DE_RUTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CENTRAL">
+              <PropertyRef Name="ID_CENTRAL" />
+            </Principal>
+            <Dependent Role="HOJA_DE_RUTA">
+              <PropertyRef Name="ID_CENTRAL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PROVINCI_RELATIONS_REGION">
+          <End Role="REGION" Type="Self.REGION" Multiplicity="1" />
+          <End Role="PROVINCIA" Type="Self.PROVINCIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="REGION">
+              <PropertyRef Name="ID_REGION" />
+            </Principal>
+            <Dependent Role="PROVINCIA">
+              <PropertyRef Name="ID_REGION" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RELATION_RELATIONS_HOJA_DE_">
+          <End Role="HOJA_DE_RUTA" Type="Self.HOJA_DE_RUTA" Multiplicity="1" />
+          <End Role="RELATIONSHIP_4" Type="Self.RELATIONSHIP_4" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HOJA_DE_RUTA">
+              <PropertyRef Name="ID_HOJA" />
+            </Principal>
+            <Dependent Role="RELATIONSHIP_4">
+              <PropertyRef Name="ID_HOJA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RELATION_RELATIONS_USUARIO">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+          <End Role="RELATIONSHIP_4" Type="Self.RELATIONSHIP_4" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="RUT_USUARIO" />
+            </Principal>
+            <Dependent Role="RELATIONSHIP_4">
+              <PropertyRef Name="RUT_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USUARIO_RELATIONS_ROL">
+          <End Role="ROL" Type="Self.ROL" Multiplicity="1" />
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROL">
+              <PropertyRef Name="ID_ROL" />
+            </Principal>
+            <Dependent Role="USUARIO">
+              <PropertyRef Name="ID_ROL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TruckUp3ModelStoreContainer">
+          <EntitySet Name="CAMION" EntityType="Self.CAMION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CARGA" EntityType="Self.CARGA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CASETA_PUERTO" EntityType="Self.CASETA_PUERTO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CENTRAL" EntityType="Self.CENTRAL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="COMUNA" EntityType="Self.COMUNA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CONDUCTOR" EntityType="Self.CONDUCTOR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HOJA_DE_RUTA" EntityType="Self.HOJA_DE_RUTA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PROVINCIA" EntityType="Self.PROVINCIA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="REGION" EntityType="Self.REGION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RELATIONSHIP_4" EntityType="Self.RELATIONSHIP_4" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ROL" EntityType="Self.ROL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USUARIO" EntityType="Self.USUARIO" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CAMION_RELATIONS_CONDUCTO" Association="Self.FK_CAMION_RELATIONS_CONDUCTO">
+            <End Role="CONDUCTOR" EntitySet="CONDUCTOR" />
+            <End Role="CAMION" EntitySet="CAMION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CARGA_RELATIONS_CAMION" Association="Self.FK_CARGA_RELATIONS_CAMION">
+            <End Role="CAMION" EntitySet="CAMION" />
+            <End Role="CARGA" EntitySet="CARGA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CASETA_P_RELATIONS_REGION" Association="Self.FK_CASETA_P_RELATIONS_REGION">
+            <End Role="REGION" EntitySet="REGION" />
+            <End Role="CASETA_PUERTO" EntitySet="CASETA_PUERTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CENTRAL_RELATIONS_COMUNA" Association="Self.FK_CENTRAL_RELATIONS_COMUNA">
+            <End Role="COMUNA" EntitySet="COMUNA" />
+            <End Role="CENTRAL" EntitySet="CENTRAL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COMUNA_RELATIONS_PROVINCI" Association="Self.FK_COMUNA_RELATIONS_PROVINCI">
+            <End Role="PROVINCIA" EntitySet="PROVINCIA" />
+            <End Role="COMUNA" EntitySet="COMUNA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HOJA_DE__RELATIONS_CARGA" Association="Self.FK_HOJA_DE__RELATIONS_CARGA">
+            <End Role="CARGA" EntitySet="CARGA" />
+            <End Role="HOJA_DE_RUTA" EntitySet="HOJA_DE_RUTA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HOJA_DE__RELATIONS_CASETA_P" Association="Self.FK_HOJA_DE__RELATIONS_CASETA_P">
+            <End Role="CASETA_PUERTO" EntitySet="CASETA_PUERTO" />
+            <End Role="HOJA_DE_RUTA" EntitySet="HOJA_DE_RUTA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HOJA_DE__RELATIONS_CENTRAL" Association="Self.FK_HOJA_DE__RELATIONS_CENTRAL">
+            <End Role="CENTRAL" EntitySet="CENTRAL" />
+            <End Role="HOJA_DE_RUTA" EntitySet="HOJA_DE_RUTA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PROVINCI_RELATIONS_REGION" Association="Self.FK_PROVINCI_RELATIONS_REGION">
+            <End Role="REGION" EntitySet="REGION" />
+            <End Role="PROVINCIA" EntitySet="PROVINCIA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RELATION_RELATIONS_HOJA_DE_" Association="Self.FK_RELATION_RELATIONS_HOJA_DE_">
+            <End Role="HOJA_DE_RUTA" EntitySet="HOJA_DE_RUTA" />
+            <End Role="RELATIONSHIP_4" EntitySet="RELATIONSHIP_4" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RELATION_RELATIONS_USUARIO" Association="Self.FK_RELATION_RELATIONS_USUARIO">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="RELATIONSHIP_4" EntitySet="RELATIONSHIP_4" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USUARIO_RELATIONS_ROL" Association="Self.FK_USUARIO_RELATIONS_ROL">
+            <End Role="ROL" EntitySet="ROL" />
+            <End Role="USUARIO" EntitySet="USUARIO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TruckUp3Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CAMION">
+          <Key>
+            <PropertyRef Name="PATENTE" />
+          </Key>
+          <Property Name="PATENTE" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RUT_CONDUCTOR" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NRO_RAMPLAS" Type="Int32" Nullable="false" />
+          <Property Name="NRO_EJES" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CONDUCTOR" Relationship="Self.FK_CAMION_RELATIONS_CONDUCTO" FromRole="CAMION" ToRole="CONDUCTOR" />
+          <NavigationProperty Name="CARGA" Relationship="Self.FK_CARGA_RELATIONS_CAMION" FromRole="CAMION" ToRole="CARGA" />
+        </EntityType>
+        <EntityType Name="CARGA">
+          <Key>
+            <PropertyRef Name="ID_CARGA" />
+          </Key>
+          <Property Name="ID_CARGA" Type="Int32" Nullable="false" />
+          <Property Name="PATENTE" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ORIGEN_CARGA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DESTINO_CARGA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DESCRIPCION_CARGA" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="CAMION" Relationship="Self.FK_CARGA_RELATIONS_CAMION" FromRole="CARGA" ToRole="CAMION" />
+          <NavigationProperty Name="HOJA_DE_RUTA" Relationship="Self.FK_HOJA_DE__RELATIONS_CARGA" FromRole="CARGA" ToRole="HOJA_DE_RUTA" />
+        </EntityType>
+        <EntityType Name="CASETA_PUERTO">
+          <Key>
+            <PropertyRef Name="ID_CASETA" />
+          </Key>
+          <Property Name="ID_CASETA" Type="Int32" Nullable="false" />
+          <Property Name="ID_REGION" Type="Int32" Nullable="false" />
+          <Property Name="DIRECCION_CASETA" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TELEFONO_CASETA" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="REGION" Relationship="Self.FK_CASETA_P_RELATIONS_REGION" FromRole="CASETA_PUERTO" ToRole="REGION" />
+          <NavigationProperty Name="HOJA_DE_RUTA" Relationship="Self.FK_HOJA_DE__RELATIONS_CASETA_P" FromRole="CASETA_PUERTO" ToRole="HOJA_DE_RUTA" />
+        </EntityType>
+        <EntityType Name="CENTRAL">
+          <Key>
+            <PropertyRef Name="ID_CENTRAL" />
+          </Key>
+          <Property Name="ID_CENTRAL" Type="Int32" Nullable="false" />
+          <Property Name="ID_COMUNA" Type="Int32" Nullable="false" />
+          <Property Name="DIRECCION_CENTRAL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TELEFONO_CENTRAL" Type="Int32" Nullable="false" />
+          <Property Name="EMAIL_CENTRAL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="COMUNA" Relationship="Self.FK_CENTRAL_RELATIONS_COMUNA" FromRole="CENTRAL" ToRole="COMUNA" />
+          <NavigationProperty Name="HOJA_DE_RUTA" Relationship="Self.FK_HOJA_DE__RELATIONS_CENTRAL" FromRole="CENTRAL" ToRole="HOJA_DE_RUTA" />
+        </EntityType>
+        <EntityType Name="COMUNA">
+          <Key>
+            <PropertyRef Name="ID_COMUNA" />
+          </Key>
+          <Property Name="ID_COMUNA" Type="Int32" Nullable="false" />
+          <Property Name="ID_PROVINCIA" Type="Int32" Nullable="false" />
+          <Property Name="NOMBRE_COMUNA" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="CENTRAL" Relationship="Self.FK_CENTRAL_RELATIONS_COMUNA" FromRole="COMUNA" ToRole="CENTRAL" />
+          <NavigationProperty Name="PROVINCIA" Relationship="Self.FK_COMUNA_RELATIONS_PROVINCI" FromRole="COMUNA" ToRole="PROVINCIA" />
+        </EntityType>
+        <EntityType Name="CONDUCTOR">
+          <Key>
+            <PropertyRef Name="RUT_CONDUCTOR" />
+          </Key>
+          <Property Name="RUT_CONDUCTOR" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NOMBRE_CONDUCTOR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="APELLIDOPAT_CONDUCTOR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="APELLIDOMAT_CONDUCTOR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TELEFONO_CONDUCTOR" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CAMION" Relationship="Self.FK_CAMION_RELATIONS_CONDUCTO" FromRole="CONDUCTOR" ToRole="CAMION" />
+        </EntityType>
+        <EntityType Name="HOJA_DE_RUTA">
+          <Key>
+            <PropertyRef Name="ID_HOJA" />
+          </Key>
+          <Property Name="ID_HOJA" Type="Int32" Nullable="false" />
+          <Property Name="ID_CENTRAL" Type="Int32" Nullable="false" />
+          <Property Name="ID_CASETA" Type="Int32" Nullable="false" />
+          <Property Name="ID_CARGA" Type="Int32" Nullable="false" />
+          <Property Name="INICIO_RUTA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DESTINO_RUTA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FECHA" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FECHA_HORA_LLEGADA" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="CARGA" Relationship="Self.FK_HOJA_DE__RELATIONS_CARGA" FromRole="HOJA_DE_RUTA" ToRole="CARGA" />
+          <NavigationProperty Name="CASETA_PUERTO" Relationship="Self.FK_HOJA_DE__RELATIONS_CASETA_P" FromRole="HOJA_DE_RUTA" ToRole="CASETA_PUERTO" />
+          <NavigationProperty Name="CENTRAL" Relationship="Self.FK_HOJA_DE__RELATIONS_CENTRAL" FromRole="HOJA_DE_RUTA" ToRole="CENTRAL" />
+          <NavigationProperty Name="USUARIO" Relationship="Self.RELATIONSHIP_4" FromRole="HOJA_DE_RUTA" ToRole="USUARIO" />
+        </EntityType>
+        <EntityType Name="PROVINCIA">
+          <Key>
+            <PropertyRef Name="ID_PROVINCIA" />
+          </Key>
+          <Property Name="ID_PROVINCIA" Type="Int32" Nullable="false" />
+          <Property Name="ID_REGION" Type="Int32" Nullable="false" />
+          <Property Name="NOMBRE_PROVINCIA" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="COMUNA" Relationship="Self.FK_COMUNA_RELATIONS_PROVINCI" FromRole="PROVINCIA" ToRole="COMUNA" />
+          <NavigationProperty Name="REGION" Relationship="Self.FK_PROVINCI_RELATIONS_REGION" FromRole="PROVINCIA" ToRole="REGION" />
+        </EntityType>
+        <EntityType Name="REGION">
+          <Key>
+            <PropertyRef Name="ID_REGION" />
+          </Key>
+          <Property Name="ID_REGION" Type="Int32" Nullable="false" />
+          <Property Name="NOMBRE_REGION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="CASETA_PUERTO" Relationship="Self.FK_CASETA_P_RELATIONS_REGION" FromRole="REGION" ToRole="CASETA_PUERTO" />
+          <NavigationProperty Name="PROVINCIA" Relationship="Self.FK_PROVINCI_RELATIONS_REGION" FromRole="REGION" ToRole="PROVINCIA" />
+        </EntityType>
+        <EntityType Name="ROL">
+          <Key>
+            <PropertyRef Name="ID_ROL" />
+          </Key>
+          <Property Name="ID_ROL" Type="Int32" Nullable="false" />
+          <Property Name="TIPO_ROL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="USUARIO" Relationship="Self.FK_USUARIO_RELATIONS_ROL" FromRole="ROL" ToRole="USUARIO" />
+        </EntityType>
+        <EntityType Name="USUARIO">
+          <Key>
+            <PropertyRef Name="RUT_USUARIO" />
+          </Key>
+          <Property Name="RUT_USUARIO" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_ROL" Type="Int32" Nullable="false" />
+          <Property Name="NOMBRE_USUARIO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="APELLIDOPAT_USUARIO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="APELLIDOMAT_USUARIO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TELEFONO_USUARIO" Type="Int32" Nullable="false" />
+          <Property Name="CORREO_USUARIO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ROL" Relationship="Self.FK_USUARIO_RELATIONS_ROL" FromRole="USUARIO" ToRole="ROL" />
+          <NavigationProperty Name="HOJA_DE_RUTA" Relationship="Self.RELATIONSHIP_4" FromRole="USUARIO" ToRole="HOJA_DE_RUTA" />
+        </EntityType>
+        <Association Name="FK_CAMION_RELATIONS_CONDUCTO">
+          <End Role="CONDUCTOR" Type="Self.CONDUCTOR" Multiplicity="1" />
+          <End Role="CAMION" Type="Self.CAMION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CONDUCTOR">
+              <PropertyRef Name="RUT_CONDUCTOR" />
+            </Principal>
+            <Dependent Role="CAMION">
+              <PropertyRef Name="RUT_CONDUCTOR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CARGA_RELATIONS_CAMION">
+          <End Role="CAMION" Type="Self.CAMION" Multiplicity="1" />
+          <End Role="CARGA" Type="Self.CARGA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAMION">
+              <PropertyRef Name="PATENTE" />
+            </Principal>
+            <Dependent Role="CARGA">
+              <PropertyRef Name="PATENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HOJA_DE__RELATIONS_CARGA">
+          <End Role="CARGA" Type="Self.CARGA" Multiplicity="1" />
+          <End Role="HOJA_DE_RUTA" Type="Self.HOJA_DE_RUTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CARGA">
+              <PropertyRef Name="ID_CARGA" />
+            </Principal>
+            <Dependent Role="HOJA_DE_RUTA">
+              <PropertyRef Name="ID_CARGA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CASETA_P_RELATIONS_REGION">
+          <End Role="REGION" Type="Self.REGION" Multiplicity="1" />
+          <End Role="CASETA_PUERTO" Type="Self.CASETA_PUERTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="REGION">
+              <PropertyRef Name="ID_REGION" />
+            </Principal>
+            <Dependent Role="CASETA_PUERTO">
+              <PropertyRef Name="ID_REGION" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HOJA_DE__RELATIONS_CASETA_P">
+          <End Role="CASETA_PUERTO" Type="Self.CASETA_PUERTO" Multiplicity="1" />
+          <End Role="HOJA_DE_RUTA" Type="Self.HOJA_DE_RUTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CASETA_PUERTO">
+              <PropertyRef Name="ID_CASETA" />
+            </Principal>
+            <Dependent Role="HOJA_DE_RUTA">
+              <PropertyRef Name="ID_CASETA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CENTRAL_RELATIONS_COMUNA">
+          <End Role="COMUNA" Type="Self.COMUNA" Multiplicity="1" />
+          <End Role="CENTRAL" Type="Self.CENTRAL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COMUNA">
+              <PropertyRef Name="ID_COMUNA" />
+            </Principal>
+            <Dependent Role="CENTRAL">
+              <PropertyRef Name="ID_COMUNA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HOJA_DE__RELATIONS_CENTRAL">
+          <End Role="CENTRAL" Type="Self.CENTRAL" Multiplicity="1" />
+          <End Role="HOJA_DE_RUTA" Type="Self.HOJA_DE_RUTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CENTRAL">
+              <PropertyRef Name="ID_CENTRAL" />
+            </Principal>
+            <Dependent Role="HOJA_DE_RUTA">
+              <PropertyRef Name="ID_CENTRAL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COMUNA_RELATIONS_PROVINCI">
+          <End Role="PROVINCIA" Type="Self.PROVINCIA" Multiplicity="1" />
+          <End Role="COMUNA" Type="Self.COMUNA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROVINCIA">
+              <PropertyRef Name="ID_PROVINCIA" />
+            </Principal>
+            <Dependent Role="COMUNA">
+              <PropertyRef Name="ID_PROVINCIA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PROVINCI_RELATIONS_REGION">
+          <End Role="REGION" Type="Self.REGION" Multiplicity="1" />
+          <End Role="PROVINCIA" Type="Self.PROVINCIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="REGION">
+              <PropertyRef Name="ID_REGION" />
+            </Principal>
+            <Dependent Role="PROVINCIA">
+              <PropertyRef Name="ID_REGION" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USUARIO_RELATIONS_ROL">
+          <End Role="ROL" Type="Self.ROL" Multiplicity="1" />
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROL">
+              <PropertyRef Name="ID_ROL" />
+            </Principal>
+            <Dependent Role="USUARIO">
+              <PropertyRef Name="ID_ROL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RELATIONSHIP_4">
+          <End Role="HOJA_DE_RUTA" Type="Self.HOJA_DE_RUTA" Multiplicity="*" />
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="TruckUp3Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CAMION" EntityType="Self.CAMION" />
+          <EntitySet Name="CARGA" EntityType="Self.CARGA" />
+          <EntitySet Name="CASETA_PUERTO" EntityType="Self.CASETA_PUERTO" />
+          <EntitySet Name="CENTRAL" EntityType="Self.CENTRAL" />
+          <EntitySet Name="COMUNA" EntityType="Self.COMUNA" />
+          <EntitySet Name="CONDUCTOR" EntityType="Self.CONDUCTOR" />
+          <EntitySet Name="HOJA_DE_RUTA" EntityType="Self.HOJA_DE_RUTA" />
+          <EntitySet Name="PROVINCIA" EntityType="Self.PROVINCIA" />
+          <EntitySet Name="REGION" EntityType="Self.REGION" />
+          <EntitySet Name="ROL" EntityType="Self.ROL" />
+          <EntitySet Name="USUARIO" EntityType="Self.USUARIO" />
+          <AssociationSet Name="FK_CAMION_RELATIONS_CONDUCTO" Association="Self.FK_CAMION_RELATIONS_CONDUCTO">
+            <End Role="CONDUCTOR" EntitySet="CONDUCTOR" />
+            <End Role="CAMION" EntitySet="CAMION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CARGA_RELATIONS_CAMION" Association="Self.FK_CARGA_RELATIONS_CAMION">
+            <End Role="CAMION" EntitySet="CAMION" />
+            <End Role="CARGA" EntitySet="CARGA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HOJA_DE__RELATIONS_CARGA" Association="Self.FK_HOJA_DE__RELATIONS_CARGA">
+            <End Role="CARGA" EntitySet="CARGA" />
+            <End Role="HOJA_DE_RUTA" EntitySet="HOJA_DE_RUTA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CASETA_P_RELATIONS_REGION" Association="Self.FK_CASETA_P_RELATIONS_REGION">
+            <End Role="REGION" EntitySet="REGION" />
+            <End Role="CASETA_PUERTO" EntitySet="CASETA_PUERTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HOJA_DE__RELATIONS_CASETA_P" Association="Self.FK_HOJA_DE__RELATIONS_CASETA_P">
+            <End Role="CASETA_PUERTO" EntitySet="CASETA_PUERTO" />
+            <End Role="HOJA_DE_RUTA" EntitySet="HOJA_DE_RUTA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CENTRAL_RELATIONS_COMUNA" Association="Self.FK_CENTRAL_RELATIONS_COMUNA">
+            <End Role="COMUNA" EntitySet="COMUNA" />
+            <End Role="CENTRAL" EntitySet="CENTRAL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HOJA_DE__RELATIONS_CENTRAL" Association="Self.FK_HOJA_DE__RELATIONS_CENTRAL">
+            <End Role="CENTRAL" EntitySet="CENTRAL" />
+            <End Role="HOJA_DE_RUTA" EntitySet="HOJA_DE_RUTA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COMUNA_RELATIONS_PROVINCI" Association="Self.FK_COMUNA_RELATIONS_PROVINCI">
+            <End Role="PROVINCIA" EntitySet="PROVINCIA" />
+            <End Role="COMUNA" EntitySet="COMUNA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PROVINCI_RELATIONS_REGION" Association="Self.FK_PROVINCI_RELATIONS_REGION">
+            <End Role="REGION" EntitySet="REGION" />
+            <End Role="PROVINCIA" EntitySet="PROVINCIA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USUARIO_RELATIONS_ROL" Association="Self.FK_USUARIO_RELATIONS_ROL">
+            <End Role="ROL" EntitySet="ROL" />
+            <End Role="USUARIO" EntitySet="USUARIO" />
+          </AssociationSet>
+          <AssociationSet Name="RELATIONSHIP_4" Association="Self.RELATIONSHIP_4">
+            <End Role="HOJA_DE_RUTA" EntitySet="HOJA_DE_RUTA" />
+            <End Role="USUARIO" EntitySet="USUARIO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TruckUp3ModelStoreContainer" CdmEntityContainer="TruckUp3Entities">
+          <EntitySetMapping Name="CAMION">
+            <EntityTypeMapping TypeName="TruckUp3Model.CAMION">
+              <MappingFragment StoreEntitySet="CAMION">
+                <ScalarProperty Name="PATENTE" ColumnName="PATENTE" />
+                <ScalarProperty Name="RUT_CONDUCTOR" ColumnName="RUT_CONDUCTOR" />
+                <ScalarProperty Name="NRO_RAMPLAS" ColumnName="NRO_RAMPLAS" />
+                <ScalarProperty Name="NRO_EJES" ColumnName="NRO_EJES" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CARGA">
+            <EntityTypeMapping TypeName="TruckUp3Model.CARGA">
+              <MappingFragment StoreEntitySet="CARGA">
+                <ScalarProperty Name="ID_CARGA" ColumnName="ID_CARGA" />
+                <ScalarProperty Name="PATENTE" ColumnName="PATENTE" />
+                <ScalarProperty Name="ORIGEN_CARGA" ColumnName="ORIGEN_CARGA" />
+                <ScalarProperty Name="DESTINO_CARGA" ColumnName="DESTINO_CARGA" />
+                <ScalarProperty Name="DESCRIPCION_CARGA" ColumnName="DESCRIPCION_CARGA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CASETA_PUERTO">
+            <EntityTypeMapping TypeName="TruckUp3Model.CASETA_PUERTO">
+              <MappingFragment StoreEntitySet="CASETA_PUERTO">
+                <ScalarProperty Name="ID_CASETA" ColumnName="ID_CASETA" />
+                <ScalarProperty Name="ID_REGION" ColumnName="ID_REGION" />
+                <ScalarProperty Name="DIRECCION_CASETA" ColumnName="DIRECCION_CASETA" />
+                <ScalarProperty Name="TELEFONO_CASETA" ColumnName="TELEFONO_CASETA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CENTRAL">
+            <EntityTypeMapping TypeName="TruckUp3Model.CENTRAL">
+              <MappingFragment StoreEntitySet="CENTRAL">
+                <ScalarProperty Name="ID_CENTRAL" ColumnName="ID_CENTRAL" />
+                <ScalarProperty Name="ID_COMUNA" ColumnName="ID_COMUNA" />
+                <ScalarProperty Name="DIRECCION_CENTRAL" ColumnName="DIRECCION_CENTRAL" />
+                <ScalarProperty Name="TELEFONO_CENTRAL" ColumnName="TELEFONO_CENTRAL" />
+                <ScalarProperty Name="EMAIL_CENTRAL" ColumnName="EMAIL_CENTRAL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COMUNA">
+            <EntityTypeMapping TypeName="TruckUp3Model.COMUNA">
+              <MappingFragment StoreEntitySet="COMUNA">
+                <ScalarProperty Name="ID_COMUNA" ColumnName="ID_COMUNA" />
+                <ScalarProperty Name="ID_PROVINCIA" ColumnName="ID_PROVINCIA" />
+                <ScalarProperty Name="NOMBRE_COMUNA" ColumnName="NOMBRE_COMUNA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CONDUCTOR">
+            <EntityTypeMapping TypeName="TruckUp3Model.CONDUCTOR">
+              <MappingFragment StoreEntitySet="CONDUCTOR">
+                <ScalarProperty Name="RUT_CONDUCTOR" ColumnName="RUT_CONDUCTOR" />
+                <ScalarProperty Name="NOMBRE_CONDUCTOR" ColumnName="NOMBRE_CONDUCTOR" />
+                <ScalarProperty Name="APELLIDOPAT_CONDUCTOR" ColumnName="APELLIDOPAT_CONDUCTOR" />
+                <ScalarProperty Name="APELLIDOMAT_CONDUCTOR" ColumnName="APELLIDOMAT_CONDUCTOR" />
+                <ScalarProperty Name="TELEFONO_CONDUCTOR" ColumnName="TELEFONO_CONDUCTOR" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HOJA_DE_RUTA">
+            <EntityTypeMapping TypeName="TruckUp3Model.HOJA_DE_RUTA">
+              <MappingFragment StoreEntitySet="HOJA_DE_RUTA">
+                <ScalarProperty Name="ID_HOJA" ColumnName="ID_HOJA" />
+                <ScalarProperty Name="ID_CENTRAL" ColumnName="ID_CENTRAL" />
+                <ScalarProperty Name="ID_CASETA" ColumnName="ID_CASETA" />
+                <ScalarProperty Name="ID_CARGA" ColumnName="ID_CARGA" />
+                <ScalarProperty Name="INICIO_RUTA" ColumnName="INICIO_RUTA" />
+                <ScalarProperty Name="DESTINO_RUTA" ColumnName="DESTINO_RUTA" />
+                <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+                <ScalarProperty Name="FECHA_HORA_LLEGADA" ColumnName="FECHA_HORA_LLEGADA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PROVINCIA">
+            <EntityTypeMapping TypeName="TruckUp3Model.PROVINCIA">
+              <MappingFragment StoreEntitySet="PROVINCIA">
+                <ScalarProperty Name="ID_PROVINCIA" ColumnName="ID_PROVINCIA" />
+                <ScalarProperty Name="ID_REGION" ColumnName="ID_REGION" />
+                <ScalarProperty Name="NOMBRE_PROVINCIA" ColumnName="NOMBRE_PROVINCIA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="REGION">
+            <EntityTypeMapping TypeName="TruckUp3Model.REGION">
+              <MappingFragment StoreEntitySet="REGION">
+                <ScalarProperty Name="ID_REGION" ColumnName="ID_REGION" />
+                <ScalarProperty Name="NOMBRE_REGION" ColumnName="NOMBRE_REGION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ROL">
+            <EntityTypeMapping TypeName="TruckUp3Model.ROL">
+              <MappingFragment StoreEntitySet="ROL">
+                <ScalarProperty Name="ID_ROL" ColumnName="ID_ROL" />
+                <ScalarProperty Name="TIPO_ROL" ColumnName="TIPO_ROL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USUARIO">
+            <EntityTypeMapping TypeName="TruckUp3Model.USUARIO">
+              <MappingFragment StoreEntitySet="USUARIO">
+                <ScalarProperty Name="RUT_USUARIO" ColumnName="RUT_USUARIO" />
+                <ScalarProperty Name="ID_ROL" ColumnName="ID_ROL" />
+                <ScalarProperty Name="NOMBRE_USUARIO" ColumnName="NOMBRE_USUARIO" />
+                <ScalarProperty Name="APELLIDOPAT_USUARIO" ColumnName="APELLIDOPAT_USUARIO" />
+                <ScalarProperty Name="APELLIDOMAT_USUARIO" ColumnName="APELLIDOMAT_USUARIO" />
+                <ScalarProperty Name="TELEFONO_USUARIO" ColumnName="TELEFONO_USUARIO" />
+                <ScalarProperty Name="CORREO_USUARIO" ColumnName="CORREO_USUARIO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="RELATIONSHIP_4" TypeName="TruckUp3Model.RELATIONSHIP_4" StoreEntitySet="RELATIONSHIP_4">
+            <EndProperty Name="HOJA_DE_RUTA">
+              <ScalarProperty Name="ID_HOJA" ColumnName="ID_HOJA" />
+            </EndProperty>
+            <EndProperty Name="USUARIO">
+              <ScalarProperty Name="RUT_USUARIO" ColumnName="RUT_USUARIO" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
